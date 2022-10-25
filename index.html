@@ -1,0 +1,71 @@
+<html>
+
+<head>
+    <title>Lista</title>
+</head>
+
+<body style="text-align:center">
+    <h1>Sua Lista</h1>
+    <hr>
+    <input type="text" placeholder="insira um novo item para a lista" id="add">
+    <button onclick="send()">enviar</button>
+    <hr>
+    <h1>sua lista:</h1>
+    <p id="lista_array" style="background-color:rgba(127, 229, 255, 0.849)"></p>
+    <hr>
+    <button onclick="show()">Mostrar sua lista</button>
+    <p id="lista_array_vertical"></p>
+    <hr>
+    <button onclick="organize()">Organizar Lista</button>
+    <p id="lista_array_organizada"></p>
+    <hr>
+    <h2>Pesquisar na lista</h2>
+    <input type="text" placeholder="achar na lista" id="pesquisa">
+    <button onclick="search()">Pesquisar</button>
+    <p id="encontrado" style="background-color:rgba(88, 228, 69, 0.849)"></p>
+    <br>
+    <hr>
+    <script>
+        var lista = [];
+        function send() {
+            lista.push(document.getElementById("add").value);
+            document.getElementById("lista_array").innerHTML = lista;
+        }
+        function show() {
+            var elemento;
+            var aux = "";
+            var comprimento = lista.length;
+            for (var i = 0; i < comprimento; i++) {
+                elemento = lista[i];
+                console.log(elemento);
+                aux = aux + "<p>" + elemento + "</p>";
+            }
+            document.getElementById("lista_array_vertical").innerHTML = aux;
+        }
+        function organize(){
+            lista.sort();
+            var elemento;
+            var aux = "";
+            var comprimento = lista.length;
+            for (var i = 0; i < comprimento; i++) {
+                elemento = lista[i];
+                console.log(elemento);
+                aux = aux + "<p>" + elemento + "</p>";
+            }
+            document.getElementById("lista_array_organizada").innerHTML = aux;
+        }
+        function search(){
+            var search = document.getElementById("pesquisa").value;
+            var found = 0;
+            for(var s = 0; s<lista.length; s++){
+                if(search==lista[s]){
+                    found = found+1;
+                }
+            }
+            document.getElementById("encontrado").innerHTML = "encontrado na lista:  "+ found +"  vez(es)";
+            console.log("encontardo na lista:"+ found);
+        }
+    </script>
+</body>
+
+</html>
